@@ -77,11 +77,11 @@ def send_command(command_str, is_secure=False):
 if __name__ == '__main__':
     logging.basicConfig(level=logging.WARNING)
 
-    print('\n--- LIST DIRECTORY ---')
+    print('\n LIST DIREKTORI:')
     cmd = 'GET /list HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n'
     print(send_command(cmd))
 
-    print('\n--- UPLOAD FILE ---')
+    print('\n UPLOAD FILE:')
     filepath = 'client_image.jpg'
     if os.path.isfile(filepath):
         with open(filepath, 'rb') as f:
@@ -105,17 +105,15 @@ if __name__ == '__main__':
     else:
         print(f'File {filepath} tidak ditemukan')
 
-    print('\n--- LIST SETELAH UPLOAD ---')
+    print('\n1. LIST SETELAH UPLOAD FILE')
     print(send_command('GET /list HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n'))
 
-    print('\n--- LIHAT FILE ---')
-    print(send_command('GET /deleteDummy.jpg HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n'))
-
-    print('\n--- DELETE deleteDummy.jpg ---')
-    delete_response = send_command('GET /delete/deleteDummy.jpg HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n')
+    print('\n2. LIHAT FILE')
+    print(send_command('GET /delete/example.txt HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n'))
+    
+    print('\n3. DELETE FILE example.txt')
+    delete_response = send_command('GET /delete/example.txt HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n')
     print(delete_response)
 
-    print('\n--- LIST SETELAH DELETE ---')
+    print('\n4. LIST SETELAH DELETE FILE')
     print(send_command('GET /list HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n'))
-
-
