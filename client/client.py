@@ -82,7 +82,7 @@ if __name__ == '__main__':
     print(send_command(cmd))
 
     print('\n UPLOAD FILE:')
-    filepath = 'client_image.jpg'
+    filepath = 'research_center.jpg'
     if os.path.isfile(filepath):
         with open(filepath, 'rb') as f:
             filedata = f.read()
@@ -105,7 +105,7 @@ if __name__ == '__main__':
     else:
         print(f'File {filepath} tidak ditemukan')
 
-    print('\n1. LIST SETELAH UPLOAD FILE')
+    print('\n1. LIST SETELAH UPLOAD FILE research_center.jpg')
     print(send_command('GET /list HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n'))
 
     print('\n2. LIHAT FILE')
